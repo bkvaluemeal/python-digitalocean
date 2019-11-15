@@ -39,6 +39,9 @@ class Action(BaseAPI):
                 setattr(self, attr, action[attr])
 
     def load(self):
+        if self.resource_type == 'droplet':
+            self.droplet_id = self.resource_id
+
         if not self.droplet_id:
             action = self.load_directly()
         else:
